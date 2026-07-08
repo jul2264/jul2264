@@ -11,15 +11,28 @@
 ## 💻 Tech Stack
 ---
 
-[![Skills](https://skillicons.dev/icons?i=go,python,fastapi,react,reactnative,js,postgres,redis,docker,aws,firebase,git,github,linux&theme=light)](https://skillicons.dev)
+**Languages**
+
+[![Languages](https://skillicons.dev/icons?i=go,python,js,html,css&theme=dark)](https://skillicons.dev)
+
+**Frameworks & Databases**
+
+[![Frameworks](https://skillicons.dev/icons?i=fastapi,react,reactnative,postgres,redis&theme=dark)](https://skillicons.dev)
+
+**Tools & Platforms**
+
+[![Tools](https://skillicons.dev/icons?i=docker,aws,git,github,linux&theme=dark)](https://skillicons.dev)
 
 ## 📊 GitHub Stats
 ---
 
 <p align="left">
   <img height="165" src="https://github-readme-stats.vercel.app/api?username=jul2264&show_icons=true&theme=dark&hide_border=true&count_private=true" />
-  <img height="165" src="https://github-readme-stats.vercel.app/api/top-langs/?username=jul2264&layout=compact&theme=dark&hide_border=true" />
 </p>
+
+**Most Used Languages**
+
+![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=jul2264&layout=compact&theme=dark&hide_border=true&langs_count=8&count_private=true)
 
 ![Activity Graph](https://github-readme-activity-graph.vercel.app/graph?username=jul2264&theme=react-dark&hide_border=true)
 

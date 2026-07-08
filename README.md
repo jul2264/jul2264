@@ -11,7 +11,7 @@
 ## 💻 Tech Stack
 ---
 
-[![Skills](https://skillicons.dev/icons?i=go,python,fastapi,react,reactnative,js,postgres,redis,docker,aws,firebase,git,github,linux&theme=dark)](https://skillicons.dev)
+[![Skills](https://skillicons.dev/icons?i=go,python,fastapi,react,reactnative,js,postgres,redis,docker,aws,firebase,git,github,linux&theme=light)](https://skillicons.dev)
 
 ## 📊 GitHub Stats
 ---

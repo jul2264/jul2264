@@ -2,44 +2,28 @@ from pathlib import Path
 
 def make_tech_stack_svg(output_path="tech-stack.svg"):
     svg_width = 860
-    svg_height = 315
 
-    rows = [
-        # Row 1: Core Languages
-        [
-            {"name": "Python", "color": "#3776AB", "icon": "python"},
-            {"name": "JavaScript", "color": "#F7DF1E", "icon": "javascript"},
-            {"name": "TypeScript", "color": "#3178C6", "icon": "typescript"},
-            {"name": "Java", "color": "#ED8B00", "icon": "java"},
-            {"name": "C++", "color": "#00599C", "icon": "cpp"},
-            {"name": "Go", "color": "#00ADD8", "icon": "go"},
-        ],
-        # Row 2: Frontend & Node
-        [
-            {"name": "HTML", "color": "#E34F26", "icon": "html"},
-            {"name": "CSS", "color": "#1572B6", "icon": "css"},
-            {"name": "React", "color": "#61DAFB", "icon": "react"},
-            {"name": "Node.js", "color": "#5FA04E", "icon": "nodejs"},
-        ],
-        # Row 3: Backend & ML
-        [
-            {"name": "Django", "color": "#44B78B", "icon": "django"},
-            {"name": "TensorFlow", "color": "#FF6F00", "icon": "tensorflow"},
-            {"name": "Meilisearch", "color": "#FF5C00", "icon": "meilisearch"},
-        ],
-        # Row 4: Databases
-        [
-            {"name": "PostgreSQL", "color": "#4169E1", "icon": "postgres"},
-            {"name": "MySQL", "color": "#4479A1", "icon": "mysql"},
-            {"name": "Redis", "color": "#DC382D", "icon": "redis"},
-        ],
-        # Row 5: Tools & Environment
-        [
-            {"name": "Docker", "color": "#2496ED", "icon": "docker"},
-            {"name": "Linux", "color": "#FCC624", "icon": "linux"},
-            {"name": "Git", "color": "#F05032", "icon": "git"},
-            {"name": "VS Code", "color": "#007ACC", "icon": "vscode"},
-        ]
+    all_items = [
+        {"name": "Python", "color": "#3776AB", "icon": "python"},
+        {"name": "JavaScript", "color": "#F7DF1E", "icon": "javascript"},
+        {"name": "TypeScript", "color": "#3178C6", "icon": "typescript"},
+        {"name": "Java", "color": "#ED8B00", "icon": "java"},
+        {"name": "C++", "color": "#00599C", "icon": "cpp"},
+        {"name": "Go", "color": "#00ADD8", "icon": "go"},
+        {"name": "HTML", "color": "#E34F26", "icon": "html"},
+        {"name": "CSS", "color": "#1572B6", "icon": "css"},
+        {"name": "Node.js", "color": "#5FA04E", "icon": "nodejs"},
+        {"name": "React", "color": "#61DAFB", "icon": "react"},
+        {"name": "Django", "color": "#44B78B", "icon": "django"},
+        {"name": "TensorFlow", "color": "#FF6F00", "icon": "tensorflow"},
+        {"name": "PostgreSQL", "color": "#4169E1", "icon": "postgres"},
+        {"name": "MySQL", "color": "#4479A1", "icon": "mysql"},
+        {"name": "Redis", "color": "#DC382D", "icon": "redis"},
+        {"name": "Meilisearch", "color": "#FF5C00", "icon": "meilisearch"},
+        {"name": "Docker", "color": "#2496ED", "icon": "docker"},
+        {"name": "Linux", "color": "#FCC624", "icon": "linux"},
+        {"name": "Git", "color": "#F05032", "icon": "git"},
+        {"name": "VS Code", "color": "#007ACC", "icon": "vscode"},
     ]
 
     def get_icon_svg(icon_type, color):
@@ -86,35 +70,41 @@ def make_tech_stack_svg(output_path="tech-stack.svg"):
         else:
             return f'<circle cx="8" cy="8" r="5" fill="{color}"/>'
 
+    margin_left = 30
+    margin_right = 830
     y_start = 74
     row_step = 44
-    margin_left = 30
+    gap = 12
 
     pills_xml = []
+    current_x = margin_left
+    current_y = y_start
 
-    for r_idx, row in enumerate(rows):
-        y = y_start + r_idx * row_step
-        current_x = margin_left
+    for item in all_items:
+        name = item["name"]
+        color = item["color"]
+        icon_type = item["icon"]
 
-        for item in row:
-            name = item["name"]
-            color = item["color"]
-            icon_type = item["icon"]
+        text_len = len(name)
+        pill_width = max(72, text_len * 10 + 44)
 
-            text_len = len(name)
-            pill_width = max(72, text_len * 10 + 44)
+        if current_x + pill_width > margin_right:
+            current_x = margin_left
+            current_y += row_step
 
-            icon_svg = get_icon_svg(icon_type, color)
+        icon_svg = get_icon_svg(icon_type, color)
 
-            pill = (
-                f'<g transform="translate({current_x}, {y})">'
-                f'<rect x="0" y="0" width="{pill_width}" height="32" rx="6" ry="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>'
-                f'<g transform="translate(10, 8)">{icon_svg}</g>'
-                f'<text x="34" y="20.5" class="badge-text" fill="#c9d1d9">{name}</text>'
-                f'</g>'
-            )
-            pills_xml.append(pill)
-            current_x += pill_width + 12
+        pill = (
+            f'<g transform="translate({current_x}, {current_y})">'
+            f'<rect x="0" y="0" width="{pill_width}" height="32" rx="6" ry="6" fill="#161b22" stroke="#30363d" stroke-width="1"/>'
+            f'<g transform="translate(10, 8)">{icon_svg}</g>'
+            f'<text x="34" y="20.5" class="badge-text" fill="#c9d1d9">{name}</text>'
+            f'</g>'
+        )
+        pills_xml.append(pill)
+        current_x += pill_width + gap
+
+    svg_height = current_y + 48
 
     svg_content = f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {svg_width} {svg_height}" width="{svg_width}" height="{svg_height}">
   <style>
@@ -135,7 +125,7 @@ def make_tech_stack_svg(output_path="tech-stack.svg"):
   <rect x="0" y="0" width="{svg_width}" height="{svg_height}" class="bg" />
   
   <!-- Header Bar -->
-  <path d="M 0 10 A 10 10 0 0 1 10 0 L {svg_width - 10} 0 A 10 10 0 0 1 {svg_width} 10 L {svg_width} 32 L 0 32 Z" fill="#161b22" />
+  <path d="M 0 10 A 10 10 0 0 1 10 0 L {svg_width - 10} 0 A 10 10 0 0 1 {svg_width} 10 L {svg_width} 36 L 0 36 Z" fill="#161b22" />
   <circle cx="20" cy="18" r="5" fill="#ff5f56" />
   <circle cx="36" cy="18" r="5" fill="#ffbd2e" />
   <circle cx="52" cy="18" r="5" fill="#27c93f" />
@@ -155,7 +145,7 @@ def make_tech_stack_svg(output_path="tech-stack.svg"):
     with open(out_path, "w", encoding="utf-8") as f:
         f.write(svg_content)
 
-    print(f"Generated tech stack SVG at {out_path} ({len(svg_content)} bytes)")
+    print(f"Generated continuous flow tech stack SVG at {out_path} ({len(svg_content)} bytes, height={svg_height})")
 
 if __name__ == "__main__":
     make_tech_stack_svg()

@@ -7,11 +7,9 @@ def make_profile_svg(output_path="profile.svg"):
     name = "Julian Steve"
     role = "Intern @ YugaYatra | 3rd Yr CS Student @ SRM University"
     
-    bio_lines = [
-        "Full-Stack Developer & Software Engineering Intern building scalable web apps,",
-        "distributed systems, and intelligent search backends. Passionate about DSA",
-        "fundamentals, modern web architectures, and high-performance software."
-    ]
+    bio_line1 = "Full-Stack Developer &amp; Software Engineering Intern building scalable web apps,"
+    bio_line2 = "distributed systems, and intelligent search backends. Dedicated to sharpening DSA"
+    bio_line3 = "fundamentals, modern web architectures, and high-performance software."
 
     svg_content = f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {svg_width} {svg_height}" width="{svg_width}" height="{svg_height}">
   <style>
@@ -22,8 +20,8 @@ def make_profile_svg(output_path="profile.svg"):
     
     .name-text {{
       font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
-      font-size: 19px;
-      font-weight: 700;
+      font-size: 20px;
+      font-weight: bold;
       fill: #58a6ff;
     }}
 
@@ -54,7 +52,7 @@ def make_profile_svg(output_path="profile.svg"):
   <!-- Content -->
   <g>
     <!-- Name -->
-    <text x="30" y="64" class="name-text">👋 Hi, I'm {name}</text>
+    <text x="30" y="64" class="name-text">{name}</text>
     
     <!-- Subtitle / Role -->
     <text x="30" y="88" class="role-text">{role}</text>
@@ -63,9 +61,9 @@ def make_profile_svg(output_path="profile.svg"):
     <line x1="30" y1="102" x2="{svg_width - 30}" y2="102" stroke="#30363d" stroke-width="1" stroke-dasharray="4 4" />
 
     <!-- Bio Paragraph -->
-    <text x="30" y="124" class="bio-text">{bio_lines[0]}</text>
-    <text x="30" y="142" class="bio-text">{bio_lines[1]}</text>
-    <text x="30" y="160" class="bio-text">{bio_lines[2]}</text>
+    <text x="30" y="124" class="bio-text">{bio_line1}</text>
+    <text x="30" y="142" class="bio-text">{bio_line2}</text>
+    <text x="30" y="160" class="bio-text">{bio_line3}</text>
   </g>
 </svg>
 """

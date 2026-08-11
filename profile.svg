@@ -7,8 +7,8 @@
     
     .name-text {
       font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
-      font-size: 19px;
-      font-weight: 700;
+      font-size: 20px;
+      font-weight: bold;
       fill: #58a6ff;
     }
 
@@ -39,7 +39,7 @@
   <!-- Content -->
   <g>
     <!-- Name -->
-    <text x="30" y="64" class="name-text">👋 Hi, I'm Julian Steve</text>
+    <text x="30" y="64" class="name-text">Julian Steve</text>
     
     <!-- Subtitle / Role -->
     <text x="30" y="88" class="role-text">Intern @ YugaYatra | 3rd Yr CS Student @ SRM University</text>
@@ -48,8 +48,8 @@
     <line x1="30" y1="102" x2="830" y2="102" stroke="#30363d" stroke-width="1" stroke-dasharray="4 4" />
 
     <!-- Bio Paragraph -->
-    <text x="30" y="124" class="bio-text">Full-Stack Developer & Software Engineering Intern building scalable web apps,</text>
-    <text x="30" y="142" class="bio-text">distributed systems, and intelligent search backends. Passionate about DSA</text>
+    <text x="30" y="124" class="bio-text">Full-Stack Developer &amp; Software Engineering Intern building scalable web apps,</text>
+    <text x="30" y="142" class="bio-text">distributed systems, and intelligent search backends. Dedicated to sharpening DSA</text>
     <text x="30" y="160" class="bio-text">fundamentals, modern web architectures, and high-performance software.</text>
   </g>
 </svg>

@@ -37,7 +37,6 @@ def render_heatmap_svg():
         dt = datetime.strptime(day["date"], "%Y-%m-%d")
         wday = (dt.weekday() + 1) % 7  # 0=Sunday, 1=Monday...
         
-        # If starting a new week
         if wday == 0 and current_week:
             weeks.append(current_week)
             current_week = []
@@ -53,10 +52,8 @@ def render_heatmap_svg():
     if current_week:
         weeks.append(current_week)
 
-    # Ensure max 53 weeks
     weeks = weeks[-53:]
 
-    # Calculate month label positions
     month_labels = []
     last_month = -1
     for w_idx, week in enumerate(weeks):
@@ -66,7 +63,6 @@ def render_heatmap_svg():
                 month_labels.append((w_idx, MONTH_NAMES[m - 1]))
                 last_month = m
 
-    # Dimensions
     svg_width = 860
     svg_height = 230
     
@@ -76,7 +72,6 @@ def render_heatmap_svg():
     box_gap = 3
     step = box_size + box_gap
 
-    # Build SVG cells
     rects_xml = []
     for col_idx, week in enumerate(weeks):
         for day in week:
@@ -85,29 +80,27 @@ def render_heatmap_svg():
             y = grid_y_start + row_idx * step
             color = PALETTE[day["level"]]
             
-            # Diagonal reveal stagger delay
-            delay = round((col_idx + row_idx) * 0.025, 3)
+            delay = round((col_idx + row_idx) * 0.02, 3)
+            smil_anim = f'<animate attributeName="opacity" values="0;1" keyTimes="0;1" dur="0.3s" begin="{delay}s" fill="freeze"/>'
             
             rect_str = (
                 f'<rect class="day-box" x="{x}" y="{y}" width="{box_size}" height="{box_size}" rx="2.5" ry="2.5" '
-                f'fill="{color}" style="animation-delay: {delay}s;">'
+                f'fill="{color}">'
+                f'{smil_anim}'
                 f'<title>{day["count"]} contributions on {day["date"]}</title></rect>'
             )
             rects_xml.append(rect_str)
 
-    # Month headers XML
     months_xml = []
     for w_idx, name in month_labels:
         mx = grid_x_start + w_idx * step
         months_xml.append(f'<text x="{mx}" y="{grid_y_start - 8}" class="label">{name}</text>')
 
-    # Day headers XML (Mon, Wed, Fri)
     day_labels_xml = []
     for r_idx, name in [(1, "Mon"), (3, "Wed"), (5, "Fri")]:
         dy = grid_y_start + r_idx * step + 9
         day_labels_xml.append(f'<text x="25" y="{dy}" class="label">{name}</text>')
 
-    # Palette Legend XML
     legend_x = svg_width - 150
     legend_y = svg_height - 22
     legend_boxes = []
@@ -124,24 +117,6 @@ def render_heatmap_svg():
     .label {{ font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace; font-size: 10px; fill: #7d8590; }}
     .stats-text {{ font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace; font-size: 11px; fill: #c9d1d9; }}
     .highlight-val {{ fill: #39d353; font-weight: bold; }}
-    
-    .day-box {{
-      transform-box: fill-box;
-      transform-origin: center;
-      animation: boxReveal 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-      opacity: 0;
-    }}
-    
-    @keyframes boxReveal {{
-      0% {{
-        opacity: 0;
-        transform: scale(0.2) translateY(8px);
-      }}
-      100% {{
-        opacity: 1;
-        transform: scale(1) translateY(0);
-      }}
-    }}
   </style>
 
   <!-- Card Frame -->

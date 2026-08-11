@@ -5,7 +5,6 @@ def make_info_card(output_path="info-card.svg"):
     svg_width = 490
     svg_height = 430
     
-    # Check if STATIC mode is requested
     is_static = os.environ.get("STATIC", "0") == "1"
 
     lines = [
@@ -26,41 +25,49 @@ def make_info_card(output_path="info-card.svg"):
     line_step = 32
 
     rows_xml = []
-    anim_delay = 0.1
+    anim_delay = 0.08
 
     for idx, line in enumerate(lines):
         y = y_start + idx * line_step
-        delay_str = f"animation-delay: {round(anim_delay, 2)}s;" if not is_static else ""
-        anim_class = "line-item" if not is_static else ""
+        delay = round(anim_delay, 2)
 
         if line.get("type") == "sep":
-            rows_xml.append(
-                f'<g class="{anim_class}" style="{delay_str}">'
-                f'<line x1="30" y1="{y - 8}" x2="{svg_width - 30}" y2="{y - 8}" stroke="#30363d" stroke-width="1" stroke-dasharray="4 4" />'
-                f'</g>'
-            )
+            inner = f'<line x1="30" y1="{y - 8}" x2="{svg_width - 30}" y2="{y - 8}" stroke="#30363d" stroke-width="1" stroke-dasharray="4 4" />'
         else:
             key = line["key"]
             val = line["val"]
             kc = line["key_color"]
-            
-            rows_xml.append(
-                f'<g class="{anim_class}" style="{delay_str}">'
+            inner = (
                 f'<text x="30" y="{y}" class="key-text" fill="{kc}">{key.ljust(11)}:</text>'
                 f'<text x="145" y="{y}" class="val-text">{val}</text>'
-                f'</g>'
             )
-        anim_delay += 0.08
 
-    # Palette circles row
+        if not is_static:
+            smil = (
+                f'<animate attributeName="opacity" values="0;1" keyTimes="0;1" dur="0.35s" begin="{delay}s" fill="freeze" />'
+                f'<animateTransform attributeName="transform" type="translate" values="-10,0;0,0" keyTimes="0;1" dur="0.35s" begin="{delay}s" fill="freeze" />'
+            )
+            rows_xml.append(f'<g>{smil}{inner}</g>')
+        else:
+            rows_xml.append(f'<g>{inner}</g>')
+
+        anim_delay += 0.05
+
     palette_y = y_start + len(lines) * line_step + 10
     palette_xml = []
     for i, pcol in enumerate(palette_colors):
         px = 30 + i * 22
         palette_xml.append(f'<circle cx="{px + 6}" cy="{palette_y}" r="7" fill="{pcol}" />')
 
-    delay_palette = f"animation-delay: {round(anim_delay, 2)}s;" if not is_static else ""
-    palette_group = f'<g class="line-item" style="{delay_palette}">{"".join(palette_xml)}</g>'
+    if not is_static:
+        delay = round(anim_delay, 2)
+        smil = (
+            f'<animate attributeName="opacity" values="0;1" keyTimes="0;1" dur="0.35s" begin="{delay}s" fill="freeze" />'
+            f'<animateTransform attributeName="transform" type="translate" values="-10,0;0,0" keyTimes="0;1" dur="0.35s" begin="{delay}s" fill="freeze" />'
+        )
+        palette_group = f'<g>{smil}{"".join(palette_xml)}</g>'
+    else:
+        palette_group = f'<g>{"".join(palette_xml)}</g>'
 
     svg_content = f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {svg_width} {svg_height}" width="{svg_width}" height="{svg_height}">
   <style>
@@ -79,22 +86,6 @@ def make_info_card(output_path="info-card.svg"):
       font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
       font-size: 12.5px;
       fill: #c9d1d9;
-    }}
-
-    .line-item {{
-      opacity: 0;
-      animation: fadeInSlide 0.4s ease-out forwards;
-    }}
-
-    @keyframes fadeInSlide {{
-      0% {{
-        opacity: 0;
-        transform: translateX(-12px);
-      }}
-      100% {{
-        opacity: 1;
-        transform: translateX(0);
-      }}
     }}
   </style>
 

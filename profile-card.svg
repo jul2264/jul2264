@@ -1,7 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 185" width="860" height="185">
   <style>
-    .bg { fill: #0d1117; rx: 10px; ry: 10px; stroke: #30363d; stroke-width: 1px; }
-    .header-bar { fill: #161b22; rx: 10px; ry: 10px; }
     .term-title { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace; font-size: 13px; fill: #8b949e; font-weight: 600; }
     .term-prompt { fill: #58a6ff; }
     
@@ -27,7 +25,7 @@
   </style>
 
   <!-- Frame -->
-  <rect x="0" y="0" width="860" height="185" class="bg" />
+  <rect x="0" y="0" width="860" height="185" rx="10" ry="10" fill="#0d1117" stroke="#30363d" stroke-width="1" />
   
   <!-- Header Bar -->
   <path d="M 0 10 A 10 10 0 0 1 10 0 L 850 0 A 10 10 0 0 1 860 10 L 860 32 L 0 32 Z" fill="#161b22" />

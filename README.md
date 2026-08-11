@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="./profile.svg" width="860" alt="Julian Steve" />
+<img src="./profile-card.svg" width="860" alt="Julian Steve Profile" />
 
 <br><br>
 

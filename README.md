@@ -1,5 +1,9 @@
 <div align="center">
 
+<img src="./profile.svg" width="860" alt="Julian Steve" />
+
+<br><br>
+
 <img src="./tech-stack.svg" width="860" alt="Tech Stack" />
 
 <br><br>

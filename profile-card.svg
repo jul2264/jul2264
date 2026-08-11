@@ -47,7 +47,7 @@
 
     <!-- Bio Paragraph -->
     <text x="30" y="124" class="bio-text">Full-Stack Developer &amp; Software Engineering Intern building scalable web apps,</text>
-    <text x="30" y="142" class="bio-text">distributed systems, and intelligent search backends. Dedicated to sharpening DSA</text>
+    <text x="30" y="142" class="bio-text">distributed systems, and intelligent search backends. Dedicated to sharpening </text>
     <text x="30" y="160" class="bio-text">fundamentals, modern web architectures, and high-performance software.</text>
   </g>
 </svg>

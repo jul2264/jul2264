@@ -1,29 +1,31 @@
-![header](https://capsule-render.vercel.app/api?type=waving&color=0:1a8a8a,100:0d4f4f&height=200&section=header&text=Hi%20There%20👋&fontSize=60&fontColor=ffffff&animation=fadeIn)
+<div align="center">
 
-<h3 align="center">Sophmore at SRMIST | Sharpening DSA fundamentals & System Design</h3>
+<h3><code>jul2264@github ~ $ ./contributions.sh</code></h3>
+<img src="./contrib-heatmap.svg" width="860" alt="Live Contribution Calendar" />
 
-## 🌐 Socials
----
+<br><br>
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/juliansteve/)
-[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:juliansteve.anban@gmail.com)
+<h3><code>jul2264@github ~ $ whoami</code></h3>
+<table>
+  <tr>
+    <td valign="top" width="370">
+      <img src="./jul-ascii.svg" width="370" alt="ASCII Portrait" />
+    </td>
+    <td valign="top" width="490">
+      <img src="./info-card.svg" width="490" alt="Terminal Info Card" />
+    </td>
+  </tr>
+</table>
 
-## 💻 Tech Stack
----
+<br>
 
-**Languages**
+<h3><code>jul2264@github ~ $ cat stack.md</code></h3>
 
 [![Languages](https://skillicons.dev/icons?i=js,html,css,java,python,c,cpp,go&theme=dark)](https://skillicons.dev)
-
-**Frameworks & Databases**
-
 [![Frameworks](https://skillicons.dev/icons?i=fastapi,react,reactnative,mysql,postgres,tensorflow,keras,redis&theme=dark)](https://skillicons.dev)
-
-**Tools & Platforms**
-
 [![Tools](https://skillicons.dev/icons?i=docker,git,github,linux&theme=dark)](https://skillicons.dev)
 
-**Cybersecurity Tools**
+<br>
 
 ![Wireshark](https://img.shields.io/badge/Wireshark-1679A7?style=for-the-badge&logo=wireshark&logoColor=white)
 ![Nmap](https://img.shields.io/badge/Nmap-000000?style=for-the-badge&logo=nmap&logoColor=white)
@@ -31,17 +33,9 @@
 ![Radare2](https://img.shields.io/badge/Radare2-4B4B4B?style=for-the-badge&logo=radare2&logoColor=white)
 ![SQLMap](https://img.shields.io/badge/SQLMap-D22128?style=for-the-badge&logoColor=white)
 
-## 📊 GitHub Stats
----
+<br><br>
 
-<p align="left">
-  <img height="165" src="https://github-readme-stats.vercel.app/api?username=jul2264&show_icons=true&theme=dark&hide_border=true&count_private=true" />
-</p>
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/juliansteve/)
+[![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:juliansteve.anban@gmail.com)
 
-**Most Used Languages**
-
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=jul2264&layout=compact&theme=dark&hide_border=true&langs_count=8&count_private=true)
-
-![Activity Graph](https://github-readme-activity-graph.vercel.app/graph?username=jul2264&theme=react-dark&hide_border=true)
-
-![footer](https://capsule-render.vercel.app/api?type=waving&color=0:1a8a8a,100:0d4f4f&height=120&section=footer)
+</div>

@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 490 430" width="490" height="430">
+  <style>
+    .bg { fill: #0d1117; rx: 10px; ry: 10px; stroke: #30363d; stroke-width: 1px; }
+    .header-bar { fill: #161b22; rx: 10px; ry: 10px; }
+    .term-title { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace; font-size: 12px; fill: #8b949e; font-weight: 600; }
+    .term-prompt { fill: #58a6ff; }
+    
+    .key-text {
+      font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+      font-size: 12.5px;
+      font-weight: bold;
+    }
+    
+    .val-text {
+      font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+      font-size: 12.5px;
+      fill: #c9d1d9;
+    }
+
+    .line-item {
+      opacity: 0;
+      animation: fadeInSlide 0.4s ease-out forwards;
+    }
+
+    @keyframes fadeInSlide {
+      0% {
+        opacity: 0;
+        transform: translateX(-12px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+  </style>
+
+  <!-- Frame -->
+  <rect x="0" y="0" width="490" height="430" class="bg" />
+  
+  <!-- Header Bar -->
+  <path d="M 0 10 A 10 10 0 0 1 10 0 L 480 0 A 10 10 0 0 1 490 10 L 490 32 L 0 32 Z" fill="#161b22" />
+  <circle cx="16" cy="16" r="4.5" fill="#ff5f56" />
+  <circle cx="30" cy="16" r="4.5" fill="#ffbd2e" />
+  <circle cx="44" cy="16" r="4.5" fill="#27c93f" />
+  <text x="62" y="20" class="term-title"><tspan class="term-prompt">jul2264@github ~ $</tspan> neofetch</text>
+
+  <!-- Content Rows -->
+  <g>
+    <g class="line-item" style="animation-delay: 0.1s;"><text x="30" y="55" class="key-text" fill="#58a6ff">User       :</text><text x="145" y="55" class="val-text">juliansteve (Julian Steve)</text></g><g class="line-item" style="animation-delay: 0.18s;"><line x1="30" y1="79" x2="460" y2="79" stroke="#30363d" stroke-width="1" stroke-dasharray="4 4" /></g><g class="line-item" style="animation-delay: 0.26s;"><text x="30" y="119" class="key-text" fill="#79c0ff">OS         :</text><text x="145" y="119" class="val-text">SRMIST Sophomore (Computer Science)</text></g><g class="line-item" style="animation-delay: 0.34s;"><text x="30" y="151" class="key-text" fill="#d2a8ff">Focus      :</text><text x="145" y="151" class="val-text">DSA Fundamentals & System Design</text></g><g class="line-item" style="animation-delay: 0.42s;"><text x="30" y="183" class="key-text" fill="#7ee787">Languages  :</text><text x="145" y="183" class="val-text">Python, C++, Go, Java, JS, HTML/CSS</text></g><g class="line-item" style="animation-delay: 0.5s;"><text x="30" y="215" class="key-text" fill="#ffa657">Stack      :</text><text x="145" y="215" class="val-text">FastAPI, React, Docker, Linux, Postgres, Redis</text></g><g class="line-item" style="animation-delay: 0.58s;"><text x="30" y="247" class="key-text" fill="#ff7b72">Security   :</text><text x="145" y="247" class="val-text">Wireshark, Nmap, Burp Suite, Radare2, SQLMap</text></g><g class="line-item" style="animation-delay: 0.66s;"><text x="30" y="279" class="key-text" fill="#a5d6ff">Socials    :</text><text x="145" y="279" class="val-text">LinkedIn: juliansteve | Email: juliansteve.anban</text></g><g class="line-item" style="animation-delay: 0.74s;"><line x1="30" y1="303" x2="460" y2="303" stroke="#30363d" stroke-width="1" stroke-dasharray="4 4" /></g>
+    <g class="line-item" style="animation-delay: 0.82s;"><circle cx="36" cy="353" r="7" fill="#ff5f56" /><circle cx="58" cy="353" r="7" fill="#ffbd2e" /><circle cx="80" cy="353" r="7" fill="#27c93f" /><circle cx="102" cy="353" r="7" fill="#58a6ff" /><circle cx="124" cy="353" r="7" fill="#bc8cff" /><circle cx="146" cy="353" r="7" fill="#39d353" /><circle cx="168" cy="353" r="7" fill="#ffa657" /><circle cx="190" cy="353" r="7" fill="#c9d1d9" /></g>
+  </g>
+</svg>

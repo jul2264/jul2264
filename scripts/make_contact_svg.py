@@ -1,6 +1,6 @@
 from pathlib import Path
 
-def make_contact_svg(output_path="contact.svg"):
+def make_contact_svg(output_path="contact-card.svg"):
     svg_width = 860
     svg_height = 210
 
@@ -61,8 +61,6 @@ def make_contact_svg(output_path="contact.svg"):
 
     svg_content = f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {svg_width} {svg_height}" width="{svg_width}" height="{svg_height}">
   <style>
-    .bg {{ fill: #0d1117; rx: 10px; ry: 10px; stroke: #30363d; stroke-width: 1px; }}
-    .header-bar {{ fill: #161b22; rx: 10px; ry: 10px; }}
     .term-title {{ font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace; font-size: 13px; fill: #8b949e; font-weight: 600; }}
     .term-prompt {{ fill: #58a6ff; }}
     .section-title {{ font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace; font-size: 14.5px; font-weight: 600; fill: #e6edf3; }}
@@ -81,17 +79,17 @@ def make_contact_svg(output_path="contact.svg"):
   </style>
 
   <!-- Frame -->
-  <rect x="0" y="0" width="{svg_width}" height="{svg_height}" class="bg" />
+  <rect x="0" y="0" width="{svg_width}" height="{svg_height}" rx="10" ry="10" fill="#0d1117" stroke="#30363d" stroke-width="1" />
   
   <!-- Header Bar -->
-  <path d="M 0 10 A 10 10 0 0 1 10 0 L {svg_width - 10} 0 A 10 10 0 0 1 {svg_width} 10 L {svg_width} 32 L 0 32 Z" fill="#161b22" />
+  <path d="M 0 10 A 10 10 0 0 1 10 0 L {svg_width - 10} 0 A 10 10 0 0 1 {svg_width} 10 L {svg_width} 36 L 0 36 Z" fill="#161b22" />
   <circle cx="20" cy="18" r="5" fill="#ff5f56" />
   <circle cx="36" cy="18" r="5" fill="#ffbd2e" />
   <circle cx="52" cy="18" r="5" fill="#27c93f" />
   <text x="75" y="22" class="term-title"><tspan class="term-prompt">jul2264@github ~ $</tspan> cat contact_info.md</text>
 
   <!-- Section Title -->
-  <text x="30" y="58" class="section-title">📬 Connect &amp; Portfolio</text>
+  <text x="30" y="58" class="section-title">📬 Links</text>
 
   <!-- Contact Rows -->
   <g>

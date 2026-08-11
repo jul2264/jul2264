@@ -8,7 +8,7 @@
 
 <br><br>
 
-<img src="./contact.svg" width="860" alt="Contact & Portfolio" />
+<img src="./contact-card.svg" width="860" alt="Contact Card" />
 
 <br><br>
 

@@ -32,42 +32,54 @@ def make_info_card(output_path="info-card.svg"):
         delay = round(anim_delay, 2)
 
         if line.get("type") == "sep":
-            inner = f'<line x1="30" y1="{y - 8}" x2="{svg_width - 30}" y2="{y - 8}" stroke="#30363d" stroke-width="1" stroke-dasharray="4 4" />'
+            if not is_static:
+                inner = (
+                    f'<line x1="30" y1="{y - 8}" x2="{svg_width - 30}" y2="{y - 8}" stroke="#30363d" stroke-width="1" stroke-dasharray="4 4">'
+                    f'<animate attributeName="opacity" values="0;1" keyTimes="0;1" dur="0.35s" begin="{delay}s" fill="freeze" />'
+                    f'</line>'
+                )
+            else:
+                inner = f'<line x1="30" y1="{y - 8}" x2="{svg_width - 30}" y2="{y - 8}" stroke="#30363d" stroke-width="1" stroke-dasharray="4 4" />'
         else:
             key = line["key"]
             val = line["val"]
             kc = line["key_color"]
-            inner = (
-                f'<text x="30" y="{y}" class="key-text" fill="{kc}">{key.ljust(11)}:</text>'
-                f'<text x="145" y="{y}" class="val-text">{val}</text>'
-            )
+            
+            if not is_static:
+                inner = (
+                    f'<text x="30" y="{y}" class="key-text" fill="{kc}">'
+                    f'<animate attributeName="opacity" values="0;1" keyTimes="0;1" dur="0.35s" begin="{delay}s" fill="freeze" />'
+                    f'<animate attributeName="x" values="18;30" keyTimes="0;1" dur="0.35s" begin="{delay}s" fill="freeze" />'
+                    f'{key.ljust(11)}:</text>'
+                    f'<text x="145" y="{y}" class="val-text">'
+                    f'<animate attributeName="opacity" values="0;1" keyTimes="0;1" dur="0.35s" begin="{delay}s" fill="freeze" />'
+                    f'<animate attributeName="x" values="133;145" keyTimes="0;1" dur="0.35s" begin="{delay}s" fill="freeze" />'
+                    f'{val}</text>'
+                )
+            else:
+                inner = (
+                    f'<text x="30" y="{y}" class="key-text" fill="{kc}">{key.ljust(11)}:</text>'
+                    f'<text x="145" y="{y}" class="val-text">{val}</text>'
+                )
 
-        if not is_static:
-            smil = (
-                f'<animate attributeName="opacity" values="0;1" keyTimes="0;1" dur="0.35s" begin="{delay}s" fill="freeze" />'
-                f'<animateTransform attributeName="transform" type="translate" values="-10,0;0,0" keyTimes="0;1" dur="0.35s" begin="{delay}s" fill="freeze" />'
-            )
-            rows_xml.append(f'<g>{smil}{inner}</g>')
-        else:
-            rows_xml.append(f'<g>{inner}</g>')
-
+        rows_xml.append(f'<g>{inner}</g>')
         anim_delay += 0.05
 
     palette_y = y_start + len(lines) * line_step + 10
     palette_xml = []
+    delay = round(anim_delay, 2)
     for i, pcol in enumerate(palette_colors):
         px = 30 + i * 22
-        palette_xml.append(f'<circle cx="{px + 6}" cy="{palette_y}" r="7" fill="{pcol}" />')
+        if not is_static:
+            palette_xml.append(
+                f'<circle cx="{px + 6}" cy="{palette_y}" r="7" fill="{pcol}">'
+                f'<animate attributeName="opacity" values="0;1" keyTimes="0;1" dur="0.35s" begin="{delay}s" fill="freeze" />'
+                f'</circle>'
+            )
+        else:
+            palette_xml.append(f'<circle cx="{px + 6}" cy="{palette_y}" r="7" fill="{pcol}" />')
 
-    if not is_static:
-        delay = round(anim_delay, 2)
-        smil = (
-            f'<animate attributeName="opacity" values="0;1" keyTimes="0;1" dur="0.35s" begin="{delay}s" fill="freeze" />'
-            f'<animateTransform attributeName="transform" type="translate" values="-10,0;0,0" keyTimes="0;1" dur="0.35s" begin="{delay}s" fill="freeze" />'
-        )
-        palette_group = f'<g>{smil}{"".join(palette_xml)}</g>'
-    else:
-        palette_group = f'<g>{"".join(palette_xml)}</g>'
+    palette_group = f'<g>{"".join(palette_xml)}</g>'
 
     svg_content = f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {svg_width} {svg_height}" width="{svg_width}" height="{svg_height}">
   <style>

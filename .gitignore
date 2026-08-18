@@ -3,3 +3,5 @@ __pycache__/
 *.pyc
 source-photo.jpg
 source-prepped.png
+node_modules/
+dist/
